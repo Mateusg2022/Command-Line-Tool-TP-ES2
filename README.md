@@ -22,3 +22,15 @@ O sistema poderá realizar uma avaliação automática, identificando situaçõe
 
 Assim, a ferramenta servirá como um auxílio para desenvolvedores, professores e pesquisadores que desejam analisar a manutenibilidade de projetos de software.
   
+# Tecnologias
+
+- PyDriller
+ – Facilita a extração de métricas de evolução de repositórios Git, como crescimento de linhas de código (LOC) e estatísticas de commits.
+
+- PyGithub
+ – Permite acessar dados do GitHub (issues, pull requests, etc.) de forma simples.
+
+- Typer
+ – Framework moderno para criar a interface de linha de comando (CLI) do projeto.
+
+Essas bibliotecas foram escolhidas por atenderem diretamente aos objetivos de analisar a evolução do código e fornecer uma CLI prática para desenvolvedores e pesquisadores.
