@@ -1,12 +1,14 @@
 # Command-Line-Tool-TP-ES2
 
 Integrantes do grupo:
-  Gabriel Coelho dos Santos
-  Joao Correia Costa
-  Kayque Meira Siqueira
-  Mateus Augusto Gomes
-
-1. Explicação do Sistema
+  <ul>
+    <li>Gabriel Coelho dos Santos</li>
+    <li>Joao Correia Costa</li>
+    <li>Kayque Meira Siqueira</li>
+    <li>Mateus Augusto Gomes </li> 
+  </ul>
+  
+# Explicação do Sistema
 
 Este projeto consiste no desenvolvimento de uma ferramenta de linha de comando (CLI) para auxiliar na identificação de possíveis problemas de manutenção de software em repositórios.
 
