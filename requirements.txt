@@ -1,1 +1,3 @@
 pydriller
+typer[all]
+rich # -> faz a saída do terminal ficar mais bonita
