@@ -7,7 +7,7 @@ console = Console()
 
 def analyze_loc(repo_url: str, from_commit: str, to_commit: str):
     console.print(Panel.fit(
-        f"[bold cyan]📈 Analisando evolução de LOC[/bold cyan]\n"
+        f"[bold cyan] Analisando evolução de LOC[/bold cyan]\n"
         f"Repositório: [yellow]{repo_url}[/yellow]\n"
         f"De: [green]{from_commit[:10]}[/green] → Até: [green]{to_commit[:10]}[/green]",
         style="blue"
@@ -32,7 +32,7 @@ def analyze_loc(repo_url: str, from_commit: str, to_commit: str):
         table_total.add_row(key, str(value))
     console.print(table_total)
 
-    # máximo de linhas adicionadas
+    # maximo de linhas adicionadas
     console.print("\n[bold underline cyan]→ Máximo de linhas adicionadas por commit:[/bold underline cyan]")
     table_max = Table(show_header=True, header_style="bold magenta")
     table_max.add_column("Arquivo", style="yellow")
@@ -42,11 +42,13 @@ def analyze_loc(repo_url: str, from_commit: str, to_commit: str):
     for key, value in added_max.items():
         warning = ""
         if value > (2 * added_avg[key]):
-            warning = "⚠️ Commit muito grande!"
+            warning = "[ALERTA] Commit muito grande!"
         table_max.add_row(key, str(value), str(round(added_avg[key], 2)), warning)
+        if warning:
+            console.print(warning)
     console.print(table_max)
 
-    # Média de linhas adicionadas
+    # media de linhas adicionadas
     console.print("\n[bold underline cyan]→ Média de linhas adicionadas por commit:[/bold underline cyan]")
     table_avg = Table(show_header=True, header_style="bold magenta")
     table_avg.add_column("Arquivo", style="yellow")
