@@ -137,4 +137,3 @@ def check_function_sizes(source_code: str, filename: str) -> List[Dict]:
                 })
                 
     return results 
-
