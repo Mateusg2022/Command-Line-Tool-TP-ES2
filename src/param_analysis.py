@@ -10,7 +10,7 @@ from typing import List, Dict
 
 console = Console()
 
-def check_functions_exceed_param_limit(repo_url, commit_hash):
+def check_functions_exceed_param_limit(repo_url: str, commit_hash: str, param_limit = 5):
     """
     Analisa os arquivos Python de um commit de um repositório e verifica se
     alguma função tem muitos parâmetros.
@@ -18,6 +18,7 @@ def check_functions_exceed_param_limit(repo_url, commit_hash):
     Args:
     repo_url: O caminho para o repositorio.
     commit_hash: Hash do commit a ser analisado.
+    param_limit: o limite de parâmetros a ser considerado
     """
 
     console.print(Panel.fit(
@@ -38,17 +39,17 @@ def check_functions_exceed_param_limit(repo_url, commit_hash):
             print(f"Arquivo: {modified_file.filename}")
             print(f"Hash do Commit: {commit.hash}")
             
-            accused = check_functions_num_params(modified_file.source_code, modified_file.filename)
+            accused = check_functions_num_params(modified_file.source_code, modified_file.filename, param_limit)
 
             if accused:
-                print(f"As seguintes funções em '{modified_file.filename}' possuem mais de 5 parâmetros:")
+                print(f"As seguintes funções em '{modified_file.filename}' possuem mais de {param_limit} parâmetros:")
                 for func in accused:
                     print(f"- Função '{func['function_name']}' tem {func['param_count']} parâmetros")
             else:
-                print(f"Nenhuma função em '{modified_file.filename}' excede 5 parâmetros.")
+                print(f"Nenhuma função em '{modified_file.filename}' excede {param_limit} parâmetros.")
 
 
-def check_functions_num_params(source_code: str, filename: str) -> List[Dict]:
+def check_functions_num_params(source_code: str, filename: str, param_limit: int = 5) -> List[Dict]:
     """
     Args:
         source_code: string com o código fonte python a ser analisado
@@ -72,7 +73,7 @@ def check_functions_num_params(source_code: str, filename: str) -> List[Dict]:
             non_variable_params = getattr(node.args, "posonlyargs", []) + getattr(node.args, "args", []) + getattr(node.args, "kwonlyargs", [])
             param_count = len(non_variable_params)
                 
-            if param_count > 1:
+            if param_count > param_limit:
                 results.append({
                     "function_name": function_name,
                     "param_count": param_count,
