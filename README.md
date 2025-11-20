@@ -11,14 +11,18 @@ Integrantes do grupo:
 # Explicação do Sistema
 
 Este projeto consiste no desenvolvimento de uma ferramenta de linha de comando (CLI) para auxiliar na identificação de possíveis problemas de manutenção de software em repositórios.
+Essa análise é feita em commits de plataformas de hospedagem de código (é necessário a url do repositorio e/ou a hash do commit).
 
 Entre os indicadores analisados, estão:
 
-- Crescimento da quantidade de linhas de código (LOC) ao longo do tempo.
+- Funções Python que ultrapassam o valor de 200 linhas de código
 
-- Estatísticas relacionadas ao histórico do repositório (commits, pull requests, issues).
+- Funções Python que ultrapassam a quantidade de 5 parâmetros (valor padrão mas alterável)
+
+- Analisar a Complexidade Cognitiva (métrica quantitativa sobre a complexidade de ler e entender a lógica do código)
 
 O sistema poderá realizar uma avaliação automática, identificando situações suspeitas como aumento exagerado de LOC, ou períodos de crescimento descontrolado no repositório.
+O sistema poderá realizar avaliações automáticas sobre métricas de manutenção e evolução de software em commit antes de, por exemplo, o usuário fazer uma aprovação de uma PR.
 
 Assim, a ferramenta servirá como um auxílio para desenvolvedores, professores e pesquisadores que desejam analisar a manutenibilidade de projetos de software.
 
@@ -32,18 +36,13 @@ Após isso, utilize o comando a seguir para entender as opções de comandos:
 python main.py --help
 `
 
-Então, para testar, você pode fazer, por exemplo:
-`
-python main.py commits https://github.com/Mateusg2022/creating-a-testing-framework
-`
-
 # Tecnologias
 
 - PyDriller
- – Facilita a extração de métricas de evolução de repositórios Git, como crescimento de linhas de código (LOC) e estatísticas de commits.
+  – Facilita a extração de métricas de evolução de repositórios Git, como crescimento de linhas de código (LOC) e estatísticas de commits.
 
 - PyGithub
- – Permite acessar dados do GitHub (issues, pull requests, etc.) de forma simples.
+   – Permite acessar dados do GitHub (issues, pull requests, etc.) de forma simples.
 
 - Typer
  – Framework moderno para criar a interface de linha de comando (CLI) do projeto.
