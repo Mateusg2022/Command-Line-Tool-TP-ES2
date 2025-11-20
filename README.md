@@ -48,4 +48,7 @@ python main.py commits https://github.com/Mateusg2022/creating-a-testing-framewo
 - Typer
  – Framework moderno para criar a interface de linha de comando (CLI) do projeto.
 
+- Rich
+  - Permite melhor estilização/output das saídas do programa
+
 Essas bibliotecas foram escolhidas por atenderem diretamente aos objetivos de analisar a evolução do código e fornecer uma CLI prática para desenvolvedores e pesquisadores.
