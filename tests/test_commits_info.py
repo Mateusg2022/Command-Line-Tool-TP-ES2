@@ -12,8 +12,8 @@ class FakeCommit:
         self.modified_files = [MagicMock(filename=f) for f in files]
         self.branches = branches
 
-@patch("src.commits_info.console.print")
-@patch("src.commits_info.Repository")
+@patch("src.minero.commits_info.console.print")
+@patch("src.minero.commits_info.Repository")
 def test_show_repository_generic_info(mock_repo, mock_print):
     fake_commits = [
         FakeCommit("Caleb", ["a.py", "b.py"], {"main"}),
@@ -32,8 +32,8 @@ def test_show_repository_generic_info(mock_repo, mock_print):
     assert found_author_table
 
 
-@patch("src.commits_info.console.print")
-@patch("src.commits_info.Repository")
+@patch("src.minero.commits_info.console.print")
+@patch("src.minero.commits_info.Repository")
 def test_show_commits_info(mock_repo, mock_print):
     fake_commits = [
         FakeCommit("Caleb", ["main.py", "utils.py"], {"main"}),

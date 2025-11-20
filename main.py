@@ -1,9 +1,9 @@
 from git import Optional
 import typer
-from src.cognitive_analysis import show_cognitive_analysis
-from src.commits_info import show_commits_info, show_repository_generic_info
-from src.loc_analysis import check_function_exceed_limit_size
-from src.param_analysis import check_functions_exceed_param_limit
+from src.minero.cognitive_analysis import show_cognitive_analysis
+from src.minero.commits_info import show_commits_info, show_repository_generic_info
+from src.minero.loc_analysis import check_function_exceed_limit_size
+from src.minero.param_analysis import check_functions_exceed_param_limit
 from typing_extensions import Annotated
 
 app = typer.Typer(help="Ferramenta CLI para mineração de repositórios de software.")

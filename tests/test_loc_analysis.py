@@ -129,7 +129,7 @@ def mock_repo(mock_modified_files):
     mock_commit.hash = "abc12345"
     mock_commit.modified_files = mock_modified_files
     
-    with patch("src.loc_analysis.Repository") as mock_repo_class:
+    with patch("src.minero.loc_analysis.Repository") as mock_repo_class:
         mock_repo_instance = MagicMock()
         mock_repo_instance.traverse_commits.return_value = [mock_commit]
         mock_repo_class.return_value = mock_repo_instance
@@ -139,9 +139,9 @@ def mock_repo(mock_modified_files):
 
 #================= Testes de integração da função check_function_exceed_limit_size =================#
 
-@patch("src.loc_analysis.check_function_sizes")
-@patch("src.loc_analysis.print")
-@patch("src.loc_analysis.console.print")
+@patch("src.minero.loc_analysis.check_function_sizes")
+@patch("src.minero.loc_analysis.print")
+@patch("src.minero.loc_analysis.console.print")
 def test_long_function_found_and_reported(mock_console_print, mock_builtin_print, mock_check_sizes, mock_repo):
     """
     Verifica se uma função longa encontrada no arquivo .py é 
@@ -176,9 +176,9 @@ def test_long_function_found_and_reported(mock_console_print, mock_builtin_print
     assert "Função 'super_long_function' tem 250 linhas" in printed_texts
 
 
-@patch("src.loc_analysis.check_function_sizes")
-@patch("src.loc_analysis.print")
-@patch("src.loc_analysis.console.print")
+@patch("src.minero.loc_analysis.check_function_sizes")
+@patch("src.minero.loc_analysis.print")
+@patch("src.minero.loc_analysis.console.print")
 def test_no_long_function_found(mock_console_print, mock_builtin_print, mock_check_sizes, mock_repo):
     """
     Verifica se a mensagem "Nenhuma função..." é mostrada quando
@@ -203,10 +203,10 @@ def test_no_long_function_found(mock_console_print, mock_builtin_print, mock_che
     assert "excedem 200 linhas" not in printed_texts # Garantia
 
 
-@patch("src.loc_analysis.check_function_sizes")
-@patch("src.loc_analysis.print")
-@patch("src.loc_analysis.console.print")
-@patch("src.loc_analysis.Repository") # mock separado, sem a fixture 'mock_repo'
+@patch("src.minero.loc_analysis.check_function_sizes")
+@patch("src.minero.loc_analysis.print")
+@patch("src.minero.loc_analysis.console.print")
+@patch("src.minero.loc_analysis.Repository") # mock separado, sem a fixture 'mock_repo'
 def test_no_python_files_in_commit(mock_repo, mock_console_print, mock_builtin_print, mock_check_sizes):
     """
     Verifica se 'check_function_sizes' NÃO é chamada se o commit
