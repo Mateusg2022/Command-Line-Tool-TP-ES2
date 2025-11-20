@@ -1,7 +1,7 @@
 import typer
-from minero.commits_info import show_commits_info, show_repository_generic_info
-from minero.loc_analysis import check_function_exceed_limit_size
-from minero.param_analysis import check_functions_exceed_param_limit
+from src.minero.commits_info import show_commits_info, show_repository_generic_info
+from src.minero.loc_analysis import check_function_exceed_limit_size
+from src.minero.param_analysis import check_functions_exceed_param_limit
 
 from typing_extensions import Annotated
 
