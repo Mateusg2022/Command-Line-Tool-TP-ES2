@@ -1,6 +1,6 @@
 import typer
 from src.commits_info import show_commits_info, show_repository_generic_info
-from src.loc_analysis import analyze_loc
+from src.loc_analysis import check_function_exceed_limit_size
 from src.param_analysis import check_functions_exceed_param_limit
 from typing_extensions import Annotated
 
@@ -15,12 +15,12 @@ def commits(repo_url: str):
     show_commits_info(repo_url)
 
 @app.command()
-def loc(repo_url: str, from_commit: str, to_commit: str):
+def loc(repo_url: str, commit_hash: str):
     """
-    Analisa a evolução de linhas de código (LOC) entre dois commits.
+    Emite um alerta caso um arquivo .py de um commit tenha funções que excedam 200 linhas
     """
     typer.echo(f"Analisando LOC do repositório: {repo_url}")
-    analyze_loc(repo_url, from_commit, to_commit)
+    check_function_exceed_limit_size(repo_url, commit_hash)
 
 @app.command()
 def params(repo_url: str, commit: str, param_limit: Annotated[int, typer.Argument()] = 5):
