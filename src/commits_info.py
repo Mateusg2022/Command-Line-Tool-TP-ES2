@@ -2,13 +2,14 @@ from pydriller import Repository
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
+from itertools import islice
 
 console = Console()
 
 def show_commits_info(repo_url: str):
-    console.print(Panel.fit(f"[bold cyan]🔍 Analisando repositório:[/bold cyan] {repo_url}", style="blue"))
+    console.print(Panel.fit(f"[bold cyan] Analisando repositório:[/bold cyan] {repo_url}", style="blue"))
 
-    for commit in Repository(repo_url).traverse_commits():
+    for commit in islice(Repository(repo_url).traverse_commits(), 10):
         table = Table(show_header=True, header_style="bold magenta")
         table.add_column("Arquivo Modificado", style="yellow")
 
@@ -22,7 +23,7 @@ def show_commits_info(repo_url: str):
         console.print(table)
 
 def show_repository_generic_info(repo_url: str):
-    console.print(Panel.fit(f"[bold cyan]🔍 Analisando repositório:[/bold cyan] {repo_url}", style="blue"))
+    console.print(Panel.fit(f"[bold cyan] Analisando repositório:[/bold cyan] {repo_url}", style="blue"))
 
     repo = Repository(repo_url)
     total_authors = set()
