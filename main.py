@@ -2,6 +2,7 @@ import typer
 from src.commits_info import show_commits_info, show_repository_generic_info
 from src.loc_analysis import analyze_loc
 from src.param_analysis import check_functions_exceed_param_limit
+from typing_extensions import Annotated
 
 app = typer.Typer(help="Ferramenta CLI para mineração de repositórios de software.")
 
@@ -22,12 +23,12 @@ def loc(repo_url: str, from_commit: str, to_commit: str):
     analyze_loc(repo_url, from_commit, to_commit)
 
 @app.command()
-def params(repo_url: str, commit: str):
+def params(repo_url: str, commit: str, param_limit: Annotated[int, typer.Argument()] = 5):
     """
     Analisa a quantidade de parâmetros das funções em um commit
     """
     typer.echo(f"Analisando quantidade de parâmetros do repositório: {repo_url}")
-    check_functions_exceed_param_limit(repo_url, commit)
+    check_functions_exceed_param_limit(repo_url, commit, param_limit)
     
 @app.command()
 def generic(repo_url: str):
