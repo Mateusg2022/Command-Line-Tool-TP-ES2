@@ -8,7 +8,7 @@ Integrantes do grupo:
     <li>Mateus Augusto Gomes </li> 
   </ul>
   
-# Explicação do Sistema
+# Explicação do Sistema e do objetivo
 
 Este projeto consiste no desenvolvimento de uma ferramenta de linha de comando (CLI) para auxiliar na identificação de possíveis problemas de manutenção de software em repositórios.
 Essa análise é feita em commits de plataformas de hospedagem de código (é necessário a url do repositorio e/ou a hash do commit).
@@ -21,10 +21,7 @@ Entre os indicadores analisados, estão:
 
 - Analisar a Complexidade Cognitiva (métrica quantitativa sobre a complexidade de ler e entender a lógica do código)
 
-O sistema poderá realizar uma avaliação automática, identificando situações suspeitas como aumento exagerado de LOC, ou períodos de crescimento descontrolado no repositório.
-O sistema poderá realizar avaliações automáticas sobre métricas de manutenção e evolução de software em commit antes de, por exemplo, o usuário fazer uma aprovação de uma PR.
-
-Assim, a ferramenta servirá como um auxílio para desenvolvedores, professores e pesquisadores que desejam analisar a manutenibilidade de projetos de software.
+O sistema poderá realizar avaliações automáticas sobre métricas de manutenção e evolução de software em commits. Pode ser útil como uma segunda verificação antes de, por exemplo, o usuário fazer uma aprovação de uma PR.
 
 Para executar o software, primeiro instale as dependências:
 `
@@ -39,12 +36,10 @@ python main.py --help
 # Tecnologias
 
 - PyDriller
-  – Facilita a extração de métricas de evolução de repositórios Git, como crescimento de linhas de código (LOC) e estatísticas de commits.
-
-- PyGithub
-   – Permite acessar dados do GitHub (issues, pull requests, etc.) de forma simples.
+  - Facilita a extração de métricas de evolução de repositórios Git, como crescimento de linhas de código (LOC) e estatísticas de commits.
 
 - Typer
- – Framework moderno para criar a interface de linha de comando (CLI) do projeto.
+  - Framework moderno para criar a interface de linha de comando (CLI) do projeto.
 
-Essas bibliotecas foram escolhidas por atenderem diretamente aos objetivos de analisar a evolução do código e fornecer uma CLI prática para desenvolvedores e pesquisadores.
+- Rich
+  - Biblioteca python para adicionar cores, estilos e formatação para saídas de texto no terminal.
