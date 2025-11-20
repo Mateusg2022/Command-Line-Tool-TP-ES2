@@ -104,6 +104,10 @@ class CognitiveComplexityVisitor(ast.NodeVisitor):
         
         for child in node.body:
             self.visit(child)
+
+        self._nesting -= 1 # reduzindo o aninhamento temporariamente para os handlers (except)
+        # pois eles estão no mesmo nível visual do try, não "dentro" dele.
+
         for h in node.handlers:
             # conta 'except' como uma estrutura de controle também
             self._enter_control()
@@ -112,6 +116,9 @@ class CognitiveComplexityVisitor(ast.NodeVisitor):
             for child in h.body:
                 self.visit(child)
             self._exit_control()
+        
+        self._nesting += 1
+
         for child in node.orelse:
             self.visit(child)
         for child in node.finalbody:
