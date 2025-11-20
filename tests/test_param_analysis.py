@@ -20,9 +20,7 @@ def foo(a, b):
 """
     result = check_functions_num_params(source, "file.py")
 
-    assert len(result) == 1
-    assert result[0]["function_name"] == "foo"
-    assert result[0]["param_count"] == 2
+    assert result == []
 
 
 def test_function_with_many_params():
@@ -43,19 +41,18 @@ def baz(a, b, *args, **kwargs):
 """
     result = check_functions_num_params(source, "file.py")
     #conta apenas args normais
-    assert len(result) == 1
-    assert result[0]["param_count"] == 2
+    assert result == []
 
 
 def test_async_function():
     source = """
-async def coro(a, b, c):
+async def coro(a, b, c, d, e, f):
     return a + b
 """
     result = check_functions_num_params(source, "file.py")
     assert len(result) == 1
     assert result[0]["function_name"] == "coro"
-    assert result[0]["param_count"] == 3
+    assert result[0]["param_count"] == 6
 
 
 #  TESTES PARA check_functions_exceed_param_limit

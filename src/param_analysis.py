@@ -10,7 +10,7 @@ from typing import List, Dict
 
 console = Console()
 
-def check_functions_exceed_param_limit(repo_url, commit_hash, param_limit):
+def check_functions_exceed_param_limit(repo_url: str, commit_hash: str, param_limit = 5):
     """
     Analisa os arquivos Python de um commit de um repositório e verifica se
     alguma função tem muitos parâmetros.
@@ -49,7 +49,7 @@ def check_functions_exceed_param_limit(repo_url, commit_hash, param_limit):
                 print(f"Nenhuma função em '{modified_file.filename}' excede {param_limit} parâmetros.")
 
 
-def check_functions_num_params(source_code: str, filename: str, param_limit) -> List[Dict]:
+def check_functions_num_params(source_code: str, filename: str, param_limit: int = 5) -> List[Dict]:
     """
     Args:
         source_code: string com o código fonte python a ser analisado
