@@ -1,7 +1,7 @@
 import textwrap
 import pytest
 from unittest.mock import patch, MagicMock
-from src.loc_analysis import check_function_sizes, check_function_exceed_limit_size
+from src.minero.loc_analysis import check_function_sizes, check_function_exceed_limit_size
       
 #================= Testes unitários da função check_function_sizes =================#
 

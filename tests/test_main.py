@@ -2,7 +2,7 @@
 from typer.testing import CliRunner
 from unittest.mock import patch
 import pytest
-from main import app
+from src.minero.main import app
 
 runner = CliRunner()
 

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from src.commits_info import show_repository_generic_info, show_commits_info
+from src.minero.commits_info import show_repository_generic_info, show_commits_info
 
 # mock de objetos do PyDriller
 class FakeCommit:

@@ -1,7 +1,7 @@
 import ast
 import pytest
 from unittest.mock import MagicMock, patch
-from src.param_analysis import check_functions_num_params, check_functions_exceed_param_limit
+from src.minero.param_analysis import check_functions_num_params, check_functions_exceed_param_limit
 
 
 def test_no_functions():
