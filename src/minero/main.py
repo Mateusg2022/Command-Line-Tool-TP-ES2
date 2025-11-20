@@ -1,9 +1,9 @@
 from typing import Optional
 import typer
-from src.minero.commits_info import show_commits_info, show_repository_generic_info
-from src.minero.loc_analysis import check_function_exceed_limit_size
-from src.minero.param_analysis import check_functions_exceed_param_limit
-from src.minero.cognitive_analysis import show_cognitive_analysis
+from .commits_info import show_commits_info, show_repository_generic_info
+from .loc_analysis import check_function_exceed_limit_size
+from .param_analysis import check_functions_exceed_param_limit
+from .cognitive_analysis import show_cognitive_analysis
 
 from typing_extensions import Annotated
 
