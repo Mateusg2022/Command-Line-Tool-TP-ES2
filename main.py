@@ -1,4 +1,6 @@
+from git import Optional
 import typer
+from src.cognitive_analysis import show_cognitive_analysis
 from src.commits_info import show_commits_info, show_repository_generic_info
 from src.loc_analysis import check_function_exceed_limit_size
 from src.param_analysis import check_functions_exceed_param_limit
@@ -29,6 +31,14 @@ def params(repo_url: str, commit: str, param_limit: Annotated[int, typer.Argumen
     """
     typer.echo(f"Analisando quantidade de parâmetros do repositório: {repo_url}")
     check_functions_exceed_param_limit(repo_url, commit, param_limit)
+
+@app.command()
+def cog_analysis(repo_url: str, commit: Annotated[Optional[str], typer.Argument()] = None, complexity_level_threshold: Annotated[int, typer.Argument()] = 12):
+    """
+    Mostra a complexidade cognitiva das funções Python em um commit específico ou nos últimos 10 commits.
+    """
+    typer.echo(f"Analisando complexidade cognitiva do repositório: {repo_url} no commit: {commit if commit else 'últimos 10 commits'}")
+    show_cognitive_analysis(repo_url, commit, complexity_level_threshold)
     
 @app.command()
 def generic(repo_url: str):
