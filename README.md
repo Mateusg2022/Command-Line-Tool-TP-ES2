@@ -1,11 +1,15 @@
-# Command-Line-Tool-TP-ES2
+# Minero - A Command-Line-Tool
+
+Trabalho Prático da disciplina de Engenharia de Software 2
+Professor: André Hora
+UFMG
 
 Integrantes do grupo:
   <ul>
     <li>Gabriel Coelho dos Santos</li>
     <li>Joao Correia Costa</li>
     <li>Kayque Meira Siqueira</li>
-    <li>Mateus Augusto Gomes </li> 
+    <li>Mateus Augusto Gomes</li> 
   </ul>
   
 # Explicação do Sistema e do objetivo
