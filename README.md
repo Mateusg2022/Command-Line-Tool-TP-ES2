@@ -28,7 +28,7 @@ Integrantes do grupo:
     - [`minero params`](#minero-params)
     - [`minero cog-analysis`](#minero-cog-analysis)
     - [`minero code-smells`](#minero-code-smells)
-  - [Testes](#testes)
+  - [Testes e cobertura](#testes-e-cobertura)
 
 
 ## Explicação do sistema e do objetivo
@@ -65,20 +65,20 @@ Para instalar e executar o software, siga os seguintes passos:
 
 1. Clone o repositório na sua máquina:
 
-    ```sh
-    $ git clone https://github.com/Mateusg2022/Minero-cli.git
+    ```console
+    git clone https://github.com/Mateusg2022/Minero-cli.git
     ```
 
 2. Instale a ferramenta com o comando abaixo:
 
-    ```sh
-    $ pip install .
+    ```console
+    pip install .
     ```
 
 3. Utilize o comando a seguir para entender as funcionalidades disponíveis e suas opções:
 
-    ```sh
-    $ minero --help
+    ```console
+    minero --help
     ```
   
     Ele também pode ser utilizado com os subcomandos para entender seus parâmetros.
@@ -92,7 +92,7 @@ Ferramenta CLI para mineração de repositórios de software.
 **Utilização**:
 
 ```console
-$ minero [OPTIONS] COMMAND [ARGS]...
+minero [OPTIONS] COMMAND [ARGS]...
 ```
 
 **Opções**:
@@ -115,7 +115,7 @@ Mostra informações genéricas de um repositório.
 **Utilização**:
 
 ```console
-$ minero generic [OPTIONS] REPO_URL
+minero generic [OPTIONS] REPO_URL
 ```
 
 **Argumentos**:
@@ -133,7 +133,7 @@ Mostra informações dos commits de um repositório.
 **Utilização**:
 
 ```console
-$ minero commits [OPTIONS] REPO_URL
+minero commits [OPTIONS] REPO_URL
 ```
 
 **Arguments**:
@@ -151,7 +151,7 @@ Emite um alerta caso um arquivo .py de um commit tenha funções que excedam 200
 **Utilização**:
 
 ```console
-$ minero loc [OPTIONS] REPO_URL COMMIT_HASH
+minero loc [OPTIONS] REPO_URL COMMIT_HASH
 ```
 
 **Arguments**:
@@ -170,7 +170,7 @@ Analisa a quantidade de parâmetros das funções em um commit
 **Utilização**:
 
 ```console
-$ minero params [OPTIONS] REPO_URL COMMIT_HASH [PARAM_LIMIT]
+minero params [OPTIONS] REPO_URL COMMIT_HASH [PARAM_LIMIT]
 ```
 
 **Arguments**:
@@ -190,7 +190,7 @@ Mostra a complexidade cognitiva das funções Python em um commit específico ou
 **Utilização**:
 
 ```console
-$ minero cog-analysis [OPTIONS] REPO_URL [COMMIT_HASH] [COMPLEXITY_LEVEL_THRESHOLD]
+minero cog-analysis [OPTIONS] REPO_URL [COMMIT_HASH] [COMPLEXITY_LEVEL_THRESHOLD]
 ```
 
 **Arguments**:
@@ -210,7 +210,7 @@ Detecta code smells relacionados à manutenção de software em um commit
 **Utilização**:
 
 ```console
-$ minero code-smells [OPTIONS] REPO_URL COMMIT_HASH
+minero code-smells [OPTIONS] REPO_URL COMMIT_HASH
 ```
 
 **Arguments**:
@@ -222,10 +222,29 @@ $ minero code-smells [OPTIONS] REPO_URL COMMIT_HASH
 
 * `--help`: Exibe a mensagem de ajuda.
 
-## Testes
+## Testes e cobertura
 
 Os testes automatizados neste projeto utilizam o `pytest` como framework. Para executá-los basta executar o seguinte comando:
 
-```sh
+```console
 pytest
 ```
+
+Relatório de cobertura (gerado em 2025-11-21):
+
+| File                                  |    Statements |     Missing |   Coverage |
+|-------------------------------------- | ------------: | ----------: | ---------: |
+| src\minero\\_\_init\_\_.py            |             0 |           0 |       100% |
+| src\minero\code\_smells\_analysis.py  |           136 |          10 |        93% |
+| src\minero\cognitive\_analysis.py     |           144 |          22 |        85% |
+| src\minero\commits\_info.py           |            44 |           0 |       100% |
+| src\minero\loc\_analysis.py           |            35 |           0 |       100% |
+| src\minero\main.py                    |            35 |           5 |        86% |
+| src\minero\param\_analysis.py         |            34 |           0 |       100% |
+| tests\test\_code\_smells\_analysis.py |           113 |           0 |       100% |
+| tests\test\_cognitive\_analysis.py    |            82 |           0 |       100% |
+| tests\test\_commits\_info.py          |            30 |           0 |       100% |
+| tests\test\_loc\_analysis.py          |           105 |           0 |       100% |
+| tests\test\_main.py                   |            43 |           0 |       100% |
+| tests\test\_param\_analysis.py        |            56 |           0 |       100% |
+|                             **TOTAL** |       **857** |      **37** |    **96%** |
