@@ -13,6 +13,24 @@ Integrantes do grupo:
 - Kayque Meira Siqueira
 - Mateus Augusto Gomes
 
+## Índice
+
+- [Minero - A Command-Line-Tool](#minero---a-command-line-tool)
+  - [Índice](#índice)
+  - [Explicação do sistema e do objetivo](#explicação-do-sistema-e-do-objetivo)
+  - [Tecnologias utilizadas](#tecnologias-utilizadas)
+  - [Instalação](#instalação)
+  - [Utilização](#utilização)
+    - [`minero`](#minero)
+    - [`minero generic`](#minero-generic)
+    - [`minero commits`](#minero-commits)
+    - [`minero loc`](#minero-loc)
+    - [`minero params`](#minero-params)
+    - [`minero cog-analysis`](#minero-cog-analysis)
+    - [`minero code-smells`](#minero-code-smells)
+  - [Testes](#testes)
+
+
 ## Explicação do sistema e do objetivo
 
 Este projeto consiste no desenvolvimento de uma ferramenta de linha de comando (CLI) para auxiliar na identificação de possíveis problemas de manutenção de software em repositórios de código Python.
@@ -203,7 +221,6 @@ $ minero code-smells [OPTIONS] REPO_URL COMMIT_HASH
 **Opções**:
 
 * `--help`: Exibe a mensagem de ajuda.
-
 
 ## Testes
 
