@@ -47,26 +47,28 @@ Para instalar e executar o software, siga os seguintes passos:
 
 1. Clone o repositório na sua máquina:
 
-    ```shell
-    git clone https://github.com/Mateusg2022/Minero-cli.git
+    ```sh
+    $ git clone https://github.com/Mateusg2022/Minero-cli.git
     ```
 
 2. Instale a ferramenta com o comando abaixo:
 
-    ```shell
-    pip install .
+    ```sh
+    $ pip install .
     ```
 
 3. Utilize o comando a seguir para entender as funcionalidades disponíveis e suas opções:
 
-    ```shell
-    minero --help
+    ```sh
+    $ minero --help
     ```
+  
+    Ele também pode ser utilizado com os subcomandos para entender seus parâmetros.
 
 ## Testes
 
 Os testes automatizados neste projeto utilizam o `pytest` como framework. Para executá-los basta executar o seguinte comando:
 
-```shell
+```sh
 pytest
 ```
