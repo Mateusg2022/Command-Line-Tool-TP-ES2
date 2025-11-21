@@ -1,7 +1,7 @@
 import ast
 import pytest
 from unittest.mock import MagicMock, patch
-from src.param_analysis import check_functions_num_params, check_functions_exceed_param_limit
+from src.minero.param_analysis import check_functions_num_params, check_functions_exceed_param_limit
 
 
 def test_no_functions():
@@ -86,7 +86,7 @@ def test_check_functions_exceed_param_limit_output(capsys):
     mock_repo = MagicMock()
     mock_repo.traverse_commits.return_value = [dummy_commit]
 
-    with patch("src.param_analysis.Repository", return_value=mock_repo):
+    with patch("src.minero.param_analysis.Repository", return_value=mock_repo):
         check_functions_exceed_param_limit("repo", "abc123")
 
     captured = capsys.readouterr()
@@ -110,7 +110,7 @@ def test_skip_non_python_files(capsys):
     mock_repo = MagicMock()
     mock_repo.traverse_commits.return_value = [dummy_commit]
 
-    with patch("src.param_analysis.Repository", return_value=mock_repo):
+    with patch("src.minero.param_analysis.Repository", return_value=mock_repo):
         check_functions_exceed_param_limit("repo", "abc123")
 
     captured = capsys.readouterr()

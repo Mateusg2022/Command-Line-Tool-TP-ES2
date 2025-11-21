@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minero"
+version = "0.1.0"
+dependencies = ["typer"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+minero = "minero.main:app"
