@@ -13,6 +13,24 @@ Integrantes do grupo:
 - Kayque Meira Siqueira
 - Mateus Augusto Gomes
 
+## Índice
+
+- [Minero - A Command-Line-Tool](#minero---a-command-line-tool)
+  - [Índice](#índice)
+  - [Explicação do sistema e do objetivo](#explicação-do-sistema-e-do-objetivo)
+  - [Tecnologias utilizadas](#tecnologias-utilizadas)
+  - [Instalação](#instalação)
+  - [Utilização](#utilização)
+    - [`minero`](#minero)
+    - [`minero generic`](#minero-generic)
+    - [`minero commits`](#minero-commits)
+    - [`minero loc`](#minero-loc)
+    - [`minero params`](#minero-params)
+    - [`minero cog-analysis`](#minero-cog-analysis)
+    - [`minero code-smells`](#minero-code-smells)
+  - [Testes e cobertura](#testes-e-cobertura)
+
+
 ## Explicação do sistema e do objetivo
 
 Este projeto consiste no desenvolvimento de uma ferramenta de linha de comando (CLI) para auxiliar na identificação de possíveis problemas de manutenção de software em repositórios de código Python.
@@ -47,26 +65,186 @@ Para instalar e executar o software, siga os seguintes passos:
 
 1. Clone o repositório na sua máquina:
 
-    ```shell
+    ```console
     git clone https://github.com/Mateusg2022/Minero-cli.git
     ```
 
 2. Instale a ferramenta com o comando abaixo:
 
-    ```shell
+    ```console
     pip install .
     ```
 
 3. Utilize o comando a seguir para entender as funcionalidades disponíveis e suas opções:
 
-    ```shell
+    ```console
     minero --help
     ```
+  
+    Ele também pode ser utilizado com os subcomandos para entender seus parâmetros.
 
-## Testes
+## Utilização
+
+### `minero`
+
+Ferramenta CLI para mineração de repositórios de software.
+
+**Utilização**:
+
+```console
+minero [OPTIONS] COMMAND [ARGS]...
+```
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+**Comandos**:
+
+* `generic`: Mostra informações genéricas de um repositório.
+* `commits`: Mostra informações dos commits de um repositório.
+* `loc`: Emite um alerta caso um arquivo .py de um commit tenha funções que excedam 200 linhas
+* `params`: Analisa a quantidade de parâmetros das funções em um commit
+* `cog-analysis`: Mostra a complexidade cognitiva das funções Python em um commit específico ou nos últimos 10 commits.
+* `code-smells`: Detecta code smells relacionados à manutenção de software em um commit
+
+### `minero generic`
+
+Mostra informações genéricas de um repositório.
+
+**Utilização**:
+
+```console
+minero generic [OPTIONS] REPO_URL
+```
+
+**Argumentos**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+### `minero commits`
+
+Mostra informações dos commits de um repositório.
+
+**Utilização**:
+
+```console
+minero commits [OPTIONS] REPO_URL
+```
+
+**Arguments**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+### `minero loc`
+
+Emite um alerta caso um arquivo .py de um commit tenha funções que excedam 200 linhas
+
+**Utilização**:
+
+```console
+minero loc [OPTIONS] REPO_URL COMMIT_HASH
+```
+
+**Arguments**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+* `COMMIT_HASH`: Hash do commit a ser analisado.  [obrigatório]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+### `minero params`
+
+Analisa a quantidade de parâmetros das funções em um commit
+
+**Utilização**:
+
+```console
+minero params [OPTIONS] REPO_URL COMMIT_HASH [PARAM_LIMIT]
+```
+
+**Arguments**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+* `COMMIT_HASH`: Hash do commit a ser analisado.  [obrigatório]
+* `[PARAM_LIMIT]`: Limite do número de parâmetros a ser utilizado.  [padrão: 5]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+### `minero cog-analysis`
+
+Mostra a complexidade cognitiva das funções Python em um commit específico ou nos últimos 10 commits.
+
+**Utilização**:
+
+```console
+minero cog-analysis [OPTIONS] REPO_URL [COMMIT_HASH] [COMPLEXITY_LEVEL_THRESHOLD]
+```
+
+**Arguments**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+* `[COMMIT_HASH]`: Hash do commit a ser analisado, opcionalmente.
+* `[COMPLEXITY_LEVEL_THRESHOLD]`: Limite de complexidade a ser considerado.  [padrão: 12]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+### `minero code-smells`
+
+Detecta code smells relacionados à manutenção de software em um commit
+
+**Utilização**:
+
+```console
+minero code-smells [OPTIONS] REPO_URL COMMIT_HASH
+```
+
+**Arguments**:
+
+* `REPO_URL`: URL do repositório a ser analisado.  [obrigatório]
+* `COMMIT_HASH`: Hash do commit a ser analisado.  [obrigatório]
+
+**Opções**:
+
+* `--help`: Exibe a mensagem de ajuda.
+
+## Testes e cobertura
 
 Os testes automatizados neste projeto utilizam o `pytest` como framework. Para executá-los basta executar o seguinte comando:
 
-```shell
+```console
 pytest
 ```
+
+Relatório de cobertura (gerado em 2025-11-21):
+
+| File                                  |    Statements |     Missing |   Coverage |
+|-------------------------------------- | ------------: | ----------: | ---------: |
+| src\minero\\_\_init\_\_.py            |             0 |           0 |       100% |
+| src\minero\code\_smells\_analysis.py  |           136 |          10 |        93% |
+| src\minero\cognitive\_analysis.py     |           144 |          22 |        85% |
+| src\minero\commits\_info.py           |            44 |           0 |       100% |
+| src\minero\loc\_analysis.py           |            35 |           0 |       100% |
+| src\minero\main.py                    |            35 |           5 |        86% |
+| src\minero\param\_analysis.py         |            34 |           0 |       100% |
+| tests\test\_code\_smells\_analysis.py |           113 |           0 |       100% |
+| tests\test\_cognitive\_analysis.py    |            82 |           0 |       100% |
+| tests\test\_commits\_info.py          |            30 |           0 |       100% |
+| tests\test\_loc\_analysis.py          |           105 |           0 |       100% |
+| tests\test\_main.py                   |            43 |           0 |       100% |
+| tests\test\_param\_analysis.py        |            56 |           0 |       100% |
+|                             **TOTAL** |       **857** |      **37** |    **96%** |
