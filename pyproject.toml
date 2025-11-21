@@ -5,7 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "minero"
 version = "0.1.0"
-dependencies = ["typer"]
+dependencies = [
+    "typer==0.20.0",
+    "pydriller==2.9",
+    "rich==14.2.0",
+    "pytest==9.0.1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
