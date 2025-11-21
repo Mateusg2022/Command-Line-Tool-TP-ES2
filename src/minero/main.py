@@ -4,6 +4,7 @@ from .commits_info import show_commits_info, show_repository_generic_info
 from .loc_analysis import check_function_exceed_limit_size
 from .param_analysis import check_functions_exceed_param_limit
 from .cognitive_analysis import show_cognitive_analysis
+from .code_smells_analysis import check_code_smells
 
 from typing_extensions import Annotated
 
@@ -48,6 +49,14 @@ def generic(repo_url: str):
     """
     typer.echo(f"Analisando informações do repositório: {repo_url}")
     show_repository_generic_info(repo_url)
+
+@app.command()
+def code_smells(repo_url: str, commit_hash: str):
+    """
+    Detecta code smells relacionados à manutenção de software em um commit
+    """
+    typer.echo(f"Analisando code smells do repositório: {repo_url}")
+    check_code_smells(repo_url, commit_hash)
 
 if __name__ == "__main__":
     app()
